@@ -49,7 +49,7 @@ k8s-use-minikube-docker:
 	@eval $$(minikube docker-env) 
 	echo "$$(minikube docker-env)"
 
-k8s-deployment-create: k8s-use-minikube-docker  docker-push
+k8s-deployment-create: k8s-use-minikube-docker
 	kubectl apply -f k8s-deployment.yaml
 k8s-deployment-delete:
 	kubectl delete -f k8s-deployment.yaml
