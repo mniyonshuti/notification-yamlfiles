@@ -22,14 +22,14 @@ spec:
             - containerPort: 8080
           env:
             #MONGO
-            - name: MONGO_DB
+            - name: MONGO_HOST
               valueFrom:
                 configMapKeyRef:
                     name: notification-service-config
                     key: mongodb
 
-            - name: MONGO_HOST
-              value: notification-service-db
+            - name: MONGO_DB
+              value: notifications
 
             #KAFKA
             - name: KAFKA
