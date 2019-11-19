@@ -2,44 +2,44 @@
 
 containerID := $(shell docker ps -a -q --filter ancestor=mniyonshuti/notification-service:latest)
 
-#===================  gradle  ===========================
-clean:
-	./mvnw clean
-build: clean
-	./mvnw  install
-run-local: build
-	java -jar build/libs/ServiceA-*.jar
-
-#===================  docker  ===========================
-docker-build: build
-	docker build -t mniyonshuti/notification-service:latest .
-
-
-docker-run: docker-build
-	docker run -p 8080:8080 mniyonshuti/notification-service:latest
-
-
-docker-login:
-	docker login
-
-docker-push: docker-login docker-build
-	docker push mniyonshuti/notification-service:latest
-
-docker-bash:
-	docker exec -ti mniyonshuti/notification-service:latest /bin/sh
-
-docker-containerID:
-	@echo running: $(containerID)
-
-docker-stop:
-	docker stop $(containerID)
-
-docker-remove:
-	docker rm $(containerID)
-
-#remove all unused images
-docker-prune:
-	docker image prune -a -f
+# #===================  gradle  ===========================
+# clean:
+# 	./mvnw clean
+# build: clean
+# 	./mvnw  install
+# run-local: build
+# 	java -jar build/libs/ServiceA-*.jar
+#
+# #===================  docker  ===========================
+# docker-build: build
+# 	docker build -t mniyonshuti/notification-service:latest .
+#
+#
+# docker-run: docker-build
+# 	docker run -p 8080:8080 mniyonshuti/notification-service:latest
+#
+#
+# docker-login:
+# 	docker login
+#
+# docker-push: docker-login docker-build
+# 	docker push mniyonshuti/notification-service:latest
+#
+# docker-bash:
+# 	docker exec -ti mniyonshuti/notification-service:latest /bin/sh
+#
+# docker-containerID:
+# 	@echo running: $(containerID)
+#
+# docker-stop:
+# 	docker stop $(containerID)
+#
+# docker-remove:
+# 	docker rm $(containerID)
+#
+# #remove all unused images
+# docker-prune:
+# 	docker image prune -a -f
 
 
 #===================  minikube  ===========================
