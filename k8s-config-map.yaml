@@ -4,4 +4,4 @@ metadata:
   name: notification-service-config
 data:
   mongodb: notification-service-mongodb.default.svc.cluster.local
-  kafka: kafka.default.svc.cluster.local
+  kafka: kafka-server.default.svc.cluster.local
